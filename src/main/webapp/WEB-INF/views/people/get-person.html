@@ -8,6 +8,10 @@
 <p th:text="${onePersonById.getName()}"></p>
 <br/>
 <p th:text="${onePersonById.getId()}"></p>
+<br/>
+<p th:text="${onePersonById.getAge()}"></p>
+<br/>
+<p th:text="${onePersonById.getEmail()}"></p>
 
 <br/>
 <a th:href="@{/people/{id}/edit(id=${onePersonById.getId()})}">Edit this person</a>
