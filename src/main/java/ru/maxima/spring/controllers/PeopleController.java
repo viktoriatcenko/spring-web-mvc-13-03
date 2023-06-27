@@ -53,19 +53,19 @@ public class PeopleController {
         return "people/edit-person";
     }
 
-//    @PatchMapping("/{id}")
-//    public String editPerson(@PathVariable("id") Long id , @ModelAttribute("editPerson") @Valid Person person,
-//                             BindingResult bindingResult) {
-//        if (bindingResult.hasErrors())
-//            return "people/edit-person";
-//
-//        personDAO.update(id, person);
-//        return "redirect:/people";
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String deletePerson(@PathVariable("id") Long id) {
-//        personDAO.delete(id);
-//        return "redirect:/people";
-//    }
+    @PatchMapping("/{id}")
+    public String editPerson(@PathVariable("id") Long id , @ModelAttribute("editPerson") @Valid Person person,
+                             BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            return "people/edit-person";
+
+        personDAO.update(id, person);
+        return "redirect:/people";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deletePerson(@PathVariable("id") Long id) {
+        personDAO.delete(id);
+        return "redirect:/people";
+    }
 }
