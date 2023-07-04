@@ -13,9 +13,8 @@ import java.util.List;
 
 @Component
 public class PersonDAO {
-    private Long PEOPLE_COUNT = 7L;
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public PersonDAO(JdbcTemplate jdbcTemplate) {
@@ -33,8 +32,8 @@ public class PersonDAO {
     }
 
     public void save(Person person) {
-        jdbcTemplate.update("insert into person(id, name, age, email) VALUES (?,?,?,?)",
-                Long.valueOf(getAllPeople().size() + 1), person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("insert into person(name, age, email) VALUES (?,?,?)",
+                person.getName(), person.getAge(), person.getEmail());
     }
 
     public void update(Long id, Person personFromForm) {
