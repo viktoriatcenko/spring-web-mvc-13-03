@@ -14,6 +14,15 @@
 
 <br/>
 
+<form th:method="PATCH" th:action="@{/people/search}" th:object="${person}">
+    <label for="id">Search by ID</label>
+    <input type="text" th:field="*{id}" id="id">
+    <br/>
+    <input type="submit" value="Search!">
+</form>
+
+<br/>
+
 <a th:href="@{/people/new}">Create new person</a>
 
 </body>

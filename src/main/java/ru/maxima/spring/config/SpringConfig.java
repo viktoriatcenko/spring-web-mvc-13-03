@@ -9,6 +9,10 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -17,20 +21,21 @@ import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
 import javax.sql.DataSource;
-import java.util.Objects;
+import java.util.Properties;
 
 @Configuration
 @ComponentScan("ru.maxima.spring")
 @EnableWebMvc
-@PropertySource("classpath:database.properties")
+@PropertySource("classpath:hibernate.properties")
+@EnableTransactionManagement
 public class SpringConfig implements WebMvcConfigurer {
     private final ApplicationContext applicationContext;
-    private final Environment environment;
+    private final Environment env;
 
     @Autowired
-    public SpringConfig(ApplicationContext applicationContext, Environment environment) {
+    public SpringConfig(ApplicationContext applicationContext, Environment env) {
         this.applicationContext = applicationContext;
-        this.environment = environment;
+        this.env = env;
     }
 
     @Bean
@@ -62,14 +67,39 @@ public class SpringConfig implements WebMvcConfigurer {
         return new JdbcTemplate(dataSource());
     }
 
+    private Properties hibernateProperties() {
+        Properties properties = new Properties();
+        properties.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
+        properties.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+
+        return properties;
+    }
+
+    @Bean
+    public LocalSessionFactoryBean sessionFactory() {
+        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource());
+        sessionFactoryBean.setPackagesToScan("ru.maxima.spring.models");
+        sessionFactoryBean.setHibernateProperties(hibernateProperties());
+        return sessionFactoryBean;
+    }
+
+    @Bean
+    public PlatformTransactionManager hibernateTransactionManager() {
+        HibernateTransactionManager platformTransactionManager = new HibernateTransactionManager();
+        platformTransactionManager.setSessionFactory(sessionFactory().getObject());
+        return platformTransactionManager;
+    }
+
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
 
-        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/first_db");
-        driverManagerDataSource.setUsername("postgres");
-        driverManagerDataSource.setPassword("postgres");
+        driverManagerDataSource.setDriverClassName(env.getProperty("hibernate.driver_class"));
+        driverManagerDataSource.setUrl(env.getProperty("hibernate.connection.url"));
+        driverManagerDataSource.setUsername(env.getProperty("hibernate.connection.username"));
+        driverManagerDataSource.setPassword(env.getProperty("hibernate.connection.password"));
 
         return driverManagerDataSource;
     }

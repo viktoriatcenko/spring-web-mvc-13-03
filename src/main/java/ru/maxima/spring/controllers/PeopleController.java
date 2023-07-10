@@ -24,6 +24,7 @@ public class PeopleController {
     @GetMapping()
     public String getPeople(Model model) {
         model.addAttribute("allPeople", personDAO.getAllPeople());
+        model.addAttribute("person", new Person());
         return "people/get-all-people";
     }
 
@@ -67,5 +68,11 @@ public class PeopleController {
     public String deletePerson(@PathVariable("id") Long id) {
         personDAO.delete(id);
         return "redirect:/people";
+    }
+
+    @PatchMapping("/search")
+    public String getPersonFromSearchById(@ModelAttribute("person") @Valid Person person, Model model) {
+        model.addAttribute("onePersonById", personDAO.getPersonById(person.getId()));
+        return "people/get-person";
     }
 }
