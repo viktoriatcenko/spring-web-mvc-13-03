@@ -10,17 +10,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c0df6c7-72b6-4609-acbb-7d6107b88368" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/models/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/repositories/ItemRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/repositories/PeopleRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/service/ItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/service/PeopleService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/controllers/AdminController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/controllers/PeopleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/controllers/PeopleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/maxima/spring/dao/PersonDAO.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +53,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/projects/spring-web-mvc/src/main/java/ru/maxima/spring&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Admin/Desktop/projects/SpringBootApp&quot;,
     &quot;spring.configuration.checksum&quot;: &quot;25931059fa2deafe2807b88a09829d3d&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -195,6 +186,10 @@
       <workItem from="1689083090019" duration="22000" />
       <workItem from="1689264672602" duration="318000" />
       <workItem from="1689265015173" duration="6826000" />
+      <workItem from="1689347080021" duration="617000" />
+      <workItem from="1689609765355" duration="3562000" />
+      <workItem from="1689614962996" duration="164000" />
+      <workItem from="1690223719994" duration="2441000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1687251861813</created>
@@ -224,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689013753439</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="init">
+      <created>1689347097465</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689347097465</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
